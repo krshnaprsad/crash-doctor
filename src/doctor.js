@@ -57,7 +57,7 @@
     FIXES.forEach(function (fx) {
       var score = 0, why = "";
       fx.match.forEach(function (m) { var re = new RegExp(m.re, "i"); if (re.test(text)) { score += m.w; if (!why || m.w >= 3) why = why && m.w < 3 ? why : (evidence(text, re) || why); } });
-      if (score > 0) hits.push({ id: fx.id, title: fx.title, games: fx.games, score: score, strength: score >= 4 ? "strong" : score >= 3 ? "likely" : "possible", cause: fill(fx.cause, f), steps: fx.steps.slice(), seen: why });
+      if (score > 0) hits.push({ id: fx.id, title: fx.title, games: fx.games, score: score, strength: score >= 4 ? "strong" : score >= 3 ? "likely" : "possible", cause: fill(fx.cause, f), steps: fx.steps.slice(), limit: fx.limit || "", seen: why });
     });
     hits.sort(function (a, b) { return b.score - a.score; });
     // a generic "file missing" hit should not outrank the specific runtime it points to
@@ -72,12 +72,12 @@
   function redact(t) { return String(t || "").replace(/([A-Za-z]:\\Users\\)[^\\\/\s"']+/gi, "$1<user>").replace(/(\/Users\/|\/home\/)[^\/\s"']+/g, "$1<user>").replace(/\b(?:\d{1,3}\.){3}\d{1,3}\b/g, "<ip>"); }
   var GENERAL = [
     "Restart the PC, then open the program again.",
-    "Update the program that crashed. For a game, verify or repair its files in the launcher (Steam: right click the game, Properties, Installed Files, Verify integrity).",
-    "Update the graphics driver from NVIDIA, AMD or Intel directly.",
+    "Update the program that crashed. For a game, verify or repair its files in the launcher (Steam: right click the game, Properties, Installed Files, Verify integrity; [Steam help](https://help.steampowered.com/en/faqs/view/0C48-FCBD-DA71-93EB)).",
+    "Update the graphics driver from the maker directly: [NVIDIA](https://www.nvidia.com/en-us/drivers/), [AMD](https://www.amd.com/en/support/download/drivers.html) or [Intel](https://www.intel.com/content/www/us/en/support/detect.html).",
     "Remove mods, plugins and add-ons and add them back one at a time.",
     "Close overlays, recorders and anything that hooks into other programs (Discord, GeForce overlay, MSI Afterburner, RTSS, OBS).",
     "Run the program as administrator once (right click, Properties, Compatibility).",
-    "Install the latest Visual C++ Redistributable, x64 and x86, and run Windows Update.",
+    "Install the latest Visual C++ Redistributable, [x64](https://aka.ms/vs/17/release/vc_redist.x64.exe) and [x86](https://aka.ms/vs/17/release/vc_redist.x86.exe), and run [Windows Update](https://support.microsoft.com/en-us/windows/windows-update-faq-8a903416-6f45-0718-f5c7-375e92dddeb2).",
     "Open Command Prompt as administrator and run sfc /scannow, then DISM /Online /Cleanup-Image /RestoreHealth, to repair Windows files."
   ];
   var PS = "Get-WinEvent -FilterHashtable @{LogName='Application'; ProviderName='Application Error'} -MaxEvents 3 | Format-List TimeCreated, Message | Out-String | Set-Clipboard";
