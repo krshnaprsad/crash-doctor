@@ -26,7 +26,7 @@
     var f = {};
     f.app = first(t, /faulting application name:\s*([^\s,]+)/i) || first(t, /application:\s*([\w.-]+\.exe)/i);
     f.module = first(t, /faulting module name:\s*([^\s,]+)/i);
-    f.code = (first(t, /exception code:\s*(0x[0-9a-f]+)/i) || first(t, /\b(0x[c-f][0-9a-f]{7})\b/i) || "").toLowerCase();
+    f.code = (first(t, /exception code:\s*(0x[0-9a-f]+)/i) || first(t, /\b(0x(?:c000[0-9a-f]{4}|e06d7363|e0434352|80000003|40000015))\b/i) || "").toLowerCase();
     f.codeMeaning = f.code && CODES[f.code] ? CODES[f.code] : "";
     f.exes = uniq(t.match(/\b[\w-]+\.exe\b/gi) || []).slice(0, 4);
     f.dlls = uniq((t.match(/[\w.-]+\.dll(?=[^\n]{0,40}(was not found|is missing|not found|could not be found|cannot be found))/gi) || []).map(function (x) { return x.replace(/\s.*$/, ""); })).slice(0, 5);
