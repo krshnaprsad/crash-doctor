@@ -3,7 +3,7 @@
 const fs = require("fs"), D = require("../src/doctor.js");
 function show(text) {
   const r = D.diagnose(text), f = r.facts, out = [];
-  const facts = [f.app && "Game exe: " + f.app, f.module && "Crashed in: " + f.module + (/^(ntdll|kernelbase|kernel32|ucrtbase)\.dll$/i.test(f.module) ? " (a Windows file, so it says little by itself)" : ""), f.code && "Error code: " + f.code + (f.codeMeaning ? " - " + f.codeMeaning : "")].filter(Boolean);
+  const facts = [f.app && "Program: " + f.app, f.module && "Crashed in: " + f.module + (/^(ntdll|kernelbase|kernel32|ucrtbase)\.dll$/i.test(f.module) ? " (a Windows file, so it says little by itself)" : ""), f.code && "Error code: " + f.code + (f.codeMeaning ? " - " + f.codeMeaning : "")].filter(Boolean);
   if (facts.length) out.push("What the log says", ...facts.map(x => "  " + x), "");
   if (r.empty) out.push("I did not recognise this one. Try the general checklist:", ...D.GENERAL.map((x, i) => "  " + (i + 1) + ". " + x));
   r.matches.forEach((m, i) => { out.push((i + 1) + ". " + m.title + " (" + m.strength + ")", "   " + m.cause); if (m.seen) out.push("   Seen in the log: " + m.seen); m.steps.forEach((s, j) => out.push("   " + (j + 1) + ") " + s)); out.push(""); });
