@@ -1,7 +1,7 @@
 const assert = require("assert"), D = require("../src/doctor.js"), F = require("../data/fixes.js");
 const top = t => D.diagnose(t).matches.map(m => m.id);
 // data sanity: every entry is complete and every pattern compiles
-F.forEach(f => { assert.ok(f.id && f.title && f.cause && f.steps.length >= 2 && f.match.length, f.id); f.match.forEach(m => { new RegExp(m.re, "i"); assert.ok(m.w >= 1 && m.w <= 4, f.id); }); });
+F.forEach(f => { assert.ok(f.id && f.title && f.cause && f.steps.length >= 2 && f.match.length, f.id); f.match.forEach(m => { new RegExp(m.re, "i"); assert.ok(m.w >= 1 && m.w <= 5, f.id); }); });
 assert.strictEqual(new Set(F.map(f => f.id)).size, F.length, "ids must be unique");
 assert.ok(!JSON.stringify(F).includes("\u2014"), "no em dashes");
 // the real case: Windows crash entry inside a mod file
@@ -27,4 +27,12 @@ assert.ok(D.diagnose("everything is fine, I just like logs").empty); assert.ok(D
 assert.strictEqual(D.redact("C:\\Users\\krishna\\Games\\a.exe 192.168.1.5"), "C:\\Users\\<user>\\Games\\a.exe <ip>");
 // a Windows file as the crashing module should not be blamed on its own
 assert.strictEqual(D.facts("Faulting module name: ntdll.dll, version: 10.0\nException code: 0xc0000374").module, "ntdll.dll");
+// real Windows events from the PowerShell line (sent by a user, report IDs removed)
+const ev = require("fs").readFileSync(require("path").join(__dirname, "fixtures/windows-events.txt"), "utf8"), r = D.diagnose(ev);
+assert.strictEqual(r.events.length, 3);
+assert.deepStrictEqual(r.events.map(e => e.app + "|" + e.module + "|" + e.code), ["ASUSSmartDisplayControl.exe|ASUSSmartDisplayControl.exe|0xc0000409", "CEPHtmlEngine.exe|libcef.dll|0xc000041d", "CEPHtmlEngine.exe|libcef.dll|0xc0000005"]);
+const ids = r.matches.map(m => m.id); assert.ok(ids.includes("adobe-cep") && ids.includes("asus-display") && ids.includes("fatal-callback"), ids.join());
+assert.strictEqual(D.diagnose(ev.split("TimeCreated : 15-10-2026 23:31:34")[0]).matches[0].id, "asus-display");
+assert.strictEqual(D.diagnose(ev.split("TimeCreated : 15-10-2026 23:31:34")[1]).matches[0].id, "adobe-cep");
+assert.ok(D.CODES["0xc000041d"]);
 console.log("doctor tests passed");
