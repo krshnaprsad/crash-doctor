@@ -31,3 +31,6 @@ ol.steps li span{flex:1;cursor:pointer}ol.steps a,.note a,p a{color:#fff}
 .msg{border:1px solid var(--line2);border-radius:10px;padding:10px 14px;color:var(--dim)}
 .foot{margin-top:28px;color:var(--dim);font-size:13px;text-align:center}.foot a{color:var(--dim)}
 @media(max-width:560px){.hd{flex-wrap:wrap}.ver{display:none}.facts{grid-template-columns:1fr}}
+
+ol.steps a.dl{color:#fff;border-bottom:1px solid var(--line2);text-decoration:none;white-space:normal}ol.steps a.dl:hover{border-bottom-color:#fff}
+.limit{margin-top:12px;padding:10px 12px;border:1px dashed var(--line2);border-radius:10px;color:var(--dim);font-size:13px}.limit b{color:var(--text)}
