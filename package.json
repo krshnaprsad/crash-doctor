@@ -1,6 +1,6 @@
 {
   "name": "crash-doctor",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Paste a crash report or error from a game, app or Windows and get the likely cause and fix steps.",
   "license": "MIT",
   "author": "Krishna Prasad",
