@@ -20,7 +20,7 @@ On Windows, the easiest way to get crash info is the line shown under "Where do 
 
 ## What it knows right now
 
-Missing Visual C++ files, error 0xc000007b, 0xc0000142 and 0xc0000135, missing DirectX files, graphics driver crashes, DirectX start up failures, out of memory, wrong Java version, Minecraft mod crashes, anti-cheat problems, missing dll files, Steam start up problems, .NET problems, Unity and Unreal crashes, memory damage errors, general access violations, mod file (.asi) crashes, unreadable game files, permission problems, and blue screen names.
+Missing Visual C++ files, error 0xc000007b, 0xc0000142 and 0xc0000135, missing DirectX files, graphics driver crashes, DirectX start up failures, out of memory, wrong Java version, Minecraft mod crashes, anti-cheat problems, missing dll files, Steam start up problems, .NET problems, Unity and Unreal crashes, memory damage errors, general access violations, mod file (.asi) crashes, unreadable game files, permission problems, and blue screen names, Adobe extension panel crashes (CEPHtmlEngine) and an ASUS display utility crash. Not everything it reads has to be a game, so it also works on other Windows programs that crash.
 
 ## Things to know
 
