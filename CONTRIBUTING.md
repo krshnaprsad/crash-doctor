@@ -24,7 +24,8 @@ Copy an entry in `data/fixes.js`. Each one has:
 - `games`: which games it is for (optional, can be an app or a system problem too)
 - `match`: patterns checked against the pasted text, each with a weight from 1 (loose) to 4 (very specific). A single weight 4 hit makes it a strong match. Use loose patterns only as a bonus on top of a specific one.
 - `cause`: one or two plain sentences on why it happens. You can use `{dll}`, `{module}`, `{java}` to fill in details from the log.
-- `steps`: the fix, quickest and most likely first
+- `steps`: the fix, quickest and most likely first. Put a download link right in the step as `[label](https://...)`. Only official pages, and only ones you have opened. Run `node tools/check-links.js` to see that they load (needs internet; some Microsoft, Intel and Adobe pages answer scripts with 403 and need a manual look).
+- `limit` (optional): a plain sentence for entries where the steps are only hints and cannot promise a fix. It shows as an "Honest limit" note.
 
 Then add a line to `tests/doctor.test.js` with a short example log that should land on your entry.
 
