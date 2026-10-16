@@ -21,7 +21,7 @@ Copy an entry in `data/fixes.js`. Each one has:
 
 - `id`: a short unique name
 - `title`: what the user sees as the heading
-- `games`: which games it is for (optional)
+- `games`: which games it is for (optional, can be an app or a system problem too)
 - `match`: patterns checked against the pasted text, each with a weight from 1 (loose) to 4 (very specific). A single weight 4 hit makes it a strong match. Use loose patterns only as a bonus on top of a specific one.
 - `cause`: one or two plain sentences on why it happens. You can use `{dll}`, `{module}`, `{java}` to fill in details from the log.
 - `steps`: the fix, quickest and most likely first
