@@ -44,4 +44,6 @@ assert.strictEqual(top("Faulting application name: x.exe\nFaulting module name: 
 assert.strictEqual(top("Faulting application name: Photoshop.exe\nException code: 0xc0000005")[0], "adobe-app");
 assert.strictEqual(top("STATUS_IN_PAGE_ERROR 0xc0000006")[0], "system-files");
 assert.ok(D.CODES["0xe0434352"]);
+assert.strictEqual(D.facts("EBX: 0xec271878 ESI: 0xc2718780").code, "");
+assert.strictEqual(D.facts("Unhandled exception 0xC0000005: Access violation").code, "0xc0000005");
 console.log("doctor tests passed");
