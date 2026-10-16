@@ -1,0 +1,24 @@
+TimeCreated : 16-10-2026 01:16:00
+Message     : Faulting application name: ASUSSmartDisplayControl.exe, version: 3.0.0.0, time stamp: 0x6a0abdd8
+              Faulting module name: ASUSSmartDisplayControl.exe, version: 3.0.0.0, time stamp: 0x6a0abdd8
+              Exception code: 0xc0000409
+              Fault offset: 0x00016dcc
+              Faulting process id: 0x379C
+              Faulting application path: C:\Program Files (x86)\ASUS\ASUS Smart Display Control\ASUSSmartDisplayControl.exe
+              Faulting module path: C:\Program Files (x86)\ASUS\ASUS Smart Display Control\ASUSSmartDisplayControl.exe
+
+TimeCreated : 15-10-2026 23:31:34
+Message     : Faulting application name: CEPHtmlEngine.exe, version: 12.0.1.2, time stamp: 0x67037182
+              Faulting module name: libcef.dll, version: 99.2.15.0, time stamp: 0x623cd6bd
+              Exception code: 0xc000041d
+              Fault offset: 0x000000000582d3ad
+              Faulting application path: C:\Program Files\Adobe\Adobe Premiere Pro 2026\CEPHtmlEngine\CEPHtmlEngine.exe
+              Faulting module path: C:\Program Files\Adobe\Adobe Premiere Pro 2026\CEPHtmlEngine\libcef.dll
+
+TimeCreated : 15-10-2026 23:31:25
+Message     : Faulting application name: CEPHtmlEngine.exe, version: 12.0.1.2, time stamp: 0x67037182
+              Faulting module name: libcef.dll, version: 99.2.15.0, time stamp: 0x623cd6bd
+              Exception code: 0xc0000005
+              Fault offset: 0x000000000582d3ad
+              Faulting application path: C:\Program Files\Adobe\Adobe Premiere Pro 2026\CEPHtmlEngine\CEPHtmlEngine.exe
+              Faulting module path: C:\Program Files\Adobe\Adobe Premiere Pro 2026\CEPHtmlEngine\libcef.dll
