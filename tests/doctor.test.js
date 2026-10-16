@@ -3,7 +3,10 @@ const top = t => D.diagnose(t).matches.map(m => m.id);
 // data sanity: every entry is complete and every pattern compiles
 F.forEach(f => { assert.ok(f.id && f.title && f.cause && f.steps.length >= 2 && f.match.length, f.id); f.match.forEach(m => { new RegExp(m.re, "i"); assert.ok(m.w >= 1 && m.w <= 5, f.id); }); });
 assert.strictEqual(new Set(F.map(f => f.id)).size, F.length, "ids must be unique");
-assert.ok(!JSON.stringify(F).includes("\u2014"), "no em dashes");
+assert.ok(!JSON.stringify(F).includes("\u2014") && !JSON.stringify(D.GENERAL).includes("\u2014"), "no em dashes");
+// every link is https and well formed, and the labelled [text](url) form is complete
+const urls = []; F.concat([{ id: "general", steps: D.GENERAL }]).forEach(f => f.steps.forEach(s => { (s.match(/https?:\/\/[^\s)\]]+/g) || []).forEach(u => { assert.ok(u.startsWith("https://"), f.id + " " + u); new URL(u); urls.push(u); }); assert.ok(!/\]\((?!https:)/.test(s) && !/\[[^\]]*\]\s*\(\s*\)/.test(s), f.id + " bad link"); }));
+assert.ok(urls.length >= 20, "links present"); assert.ok(D.diagnose("Faulting application name: ASUSSmartDisplayControl.exe\nException code: 0xc0000409").matches[0].limit.includes("cannot promise"));
 // the real case: Windows crash entry inside a mod file
 const gta = "Faulting application name: gta_sa.exe, version: 1.0.0.0\nFaulting module name: modloader.asi, version: 0.0.0.0\nException code: 0xc0000005";
 assert.strictEqual(top(gta)[0], "modloader-asi"); assert.strictEqual(D.facts(gta).module, "modloader.asi"); assert.strictEqual(D.facts(gta).code, "0xc0000005");
