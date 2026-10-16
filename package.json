@@ -1,0 +1,10 @@
+{
+  "name": "game-crash-doctor",
+  "version": "1.0.0",
+  "description": "Paste a game crash report or error and get the likely cause and fix steps.",
+  "license": "MIT",
+  "author": "Krishna Prasad",
+  "engines": { "node": ">=18" },
+  "bin": { "game-crash-doctor": "cli/doctor.js" },
+  "scripts": { "test": "node tests/doctor.test.js" }
+}
