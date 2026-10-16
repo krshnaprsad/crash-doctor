@@ -1,1 +1,36 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crash Doctor</title>
+<link rel="stylesheet" href="web/app.css">
+</head>
+<body>
+<header class="hd"><span class="logo" role="img" aria-label="Zero3 Creatives"></span><div><h1>Crash Doctor</h1><p class="tag">Games / Apps / System</p></div><span class="ver">v1.0.0</span></header>
+<main>
+  <section class="card">
+    <h2>Paste your crash info, or upload a photo of it</h2>
+    <p class="note">Paste a crash report or error from a game, an app or Windows itself and get the likely cause and what to try. A crash can't be fixed automatically, every program breaks differently. This reads what you paste, matches it against a list of known crash causes, and gives you the steps people use to fix them. If it does not recognise the crash, it says so.</p>
+    <textarea id="log" spellcheck="false" placeholder="Paste the crash report, or drop or paste a photo or screenshot of it. Paste the crash report, the error popup text, or the end of the program's log file here"></textarea>
+    <input id="pic" type="file" accept="image/*" hidden>
+    <div class="row"><button id="go" class="btn go">Diagnose</button><button id="clear" class="btn">Clear</button><button id="upl" class="btn">Upload a photo</button><span class="note">Try an example:</span><button class="lnk" data-ex="gta">GTA mod crash</button><button class="lnk" data-ex="dll">missing dll</button><button class="lnk" data-ex="gpu">graphics driver</button><button class="lnk" data-ex="adobe">Premiere panel</button><button class="lnk" data-ex="asus">ASUS app</button><button class="lnk" data-ex="java">Minecraft Java</button></div>
+    <details><summary>Where do I find the crash info on Windows?</summary>
+      <ol class="how">
+        <li><b>Easiest:</b> right after the crash, open PowerShell (Start menu, type PowerShell, Enter), paste the line below and press Enter. It copies the last 3 crash reports to your clipboard. Then paste here.<pre class="cmd" id="ps"></pre><button class="btn sm" id="cpps">Copy this line</button></li>
+        <li><b>Error popup:</b> type out the message, or press Ctrl+C while the popup is selected and paste.</li>
+        <li><b>Log file:</b> many games and apps keep a log file in their folder or in Documents. Open it, copy the last 50 lines.</li>
+        <li><b>Minecraft:</b> open the newest file in the <code>crash-reports</code> folder and paste all of it.</li>
+      </ol>
+    </details>
+  </section>
+  <p id="msg" class="msg" hidden></p>
+  <div id="out"></div>
+  <p class="foot">Everything runs in your browser. What you paste or upload is not sent anywhere. Made by Zero3. <a href="https://github.com/krshnaprsad/crash-doctor" target="_blank" rel="noopener">Source and fixes list on GitHub</a></p>
+</main>
+<script src="data/fixes.js"></script>
+<script src="src/doctor.js"></script>
+<script src="web/ocr.js"></script>
+<script src="web/app.js"></script>
+</body>
+</html>
