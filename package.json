@@ -2,7 +2,7 @@
   "name": "crash-doctor",
   "version": "2.1.0",
   "description": "Paste a crash report or error from a game, app or Windows and get the likely cause and fix steps.",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "author": "Krishna Prasad",
   "engines": { "node": ">=18" },
   "bin": { "crash-doctor": "cli/doctor.js" },
