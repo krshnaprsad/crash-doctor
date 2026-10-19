@@ -55,4 +55,7 @@ node cli/doctor.js crash.txt
 
 That needs Node 18 or newer and nothing to install.
 
-MIT licence.
+
+## Licence
+
+I made this and it is free to use, including for paid work. What it is not free to do is be copied: please don't republish, redistribute or sell the code, or build your own version from it. The full terms are in [LICENSE](LICENSE). Versions published before 19 October 2026 were MIT and stay that way. The Zero3 name and logo are not part of the licence.
